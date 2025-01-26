@@ -257,5 +257,30 @@ cout<<"\t\t\t\t\t@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 cout<<"\n";
 
 }
+int login(){
+   string pass ="";
+   char ch;
+   cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t  HOSPITAL MANAGEMENT SYSTEM \n\n";
+   cout<<"\t\t\t\t\t\t\t\t------------------------------";
+   cout<<"\n\t\t\t\t\t\t\t\t\t     LOGIN \n";	
+   cout<<"\t\t\t\t\t\t\t\t------------------------------\n\n";	
+   cout << "\t\t\t\t\t\t\t\tEnter Password: ";
+   ch = _getch();
+   while(ch != 13){  //character 13 is enter
+      pass.push_back(ch);
+      cout << '*';
+      ch = _getch();
+   }
+   if(pass == "pass"){
+      cout << "\n\n\t\t\t\t\t\t\t\tAccess Granted! \n";
+      system("PAUSE");
+      system ("CLS");
+   }else{
+      cout << "\n\n\t\t\t\t\t\t\t\tAccess Aborted...\n\t\t\t\t\t\t\t\tPlease Try Again\n\n";
+      system("PAUSE");
+      system("CLS");
+      login();
+   }
+}
 
 
