@@ -96,3 +96,4 @@ if(i==4)
             system("cls");
 			goto b;
 		}
+		
