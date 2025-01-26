@@ -74,4 +74,26 @@ cout<<"\n\n\t\t\t\t\t\tInvalid Choice\n";cout<<"\t\t\t\t\t\tTry again...........
 
 system("cls");
 
-
+//displaying the information about the hospital........option 4
+if(i==4)
+{
+	ifstream file;
+	file.open("hos.txt");
+		if(!file)
+		{
+		cout<<"\nError while opening the file\n";goto b;
+		}
+		else
+		{
+		    cout<<"\n\n\n\n\n\n\n\t\t\t\t\t   ...........................Information about the Hospital.............................\n\n";
+		    string line;
+			while(file.good())
+			{
+			getline(file,line);
+			cout<<line<<"\n\t\t";
+			}
+			cout<<"\n\n\t\t";
+			system("pause");
+            system("cls");
+			goto b;
+		}
