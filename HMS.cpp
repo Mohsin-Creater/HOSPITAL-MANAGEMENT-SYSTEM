@@ -97,8 +97,8 @@ if(i==4)
 			goto b;
 		}
 		
-		//Adding the record of the new patient..................option 3
-if(i==1)
+	//Adding the record of the new patient..................option 3
+	if(i==1)
 {
   time_t rawtime;
   struct tm * timeinfo;
@@ -195,6 +195,67 @@ if(i==2)
 			cout<<"\n\n";
 			system("pause");
             system("cls");
-			goto b;
+			gotoÂ b;
 		}
 }
+
+
+//For displaying the full medical history of patient in that hospital............option 3
+if(i==3)
+{
+    fstream pat_file;
+    cout<<"\n\nEnter the patient's file name to be opened : ";
+    cin.ignore();
+    gets(fname);
+    system("cls");
+	pat_file.open(fname, ios::in);
+		if(!pat_file)
+		{
+		cout<<"\nError while opening the file\n";goto b;
+		}
+		else
+		{
+		    cout<<"\n\n\n\n\t\t\t\t........................................ Full Medical History of "<<fname<<" ........................................\n\n\n\n";
+		    string info;
+			while(pat_file.good())
+			{
+			getline(pat_file,info);
+			cout<<info<<"\n";
+			}
+			cout<<"\n";
+        }
+        system("pause");
+        system("cls");
+        goto b;
+}
+
+//Exiting Through the system with a Thank You note........................option 5
+if(i==5)
+{
+system("cls");
+cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n";
+cout<<"\t\t\t\t\t@@ _____________________________ @@\n";
+cout<<"\t\t\t\t\t@@|                                           		                                  |@@\n";
+cout<<"\t\t\t\t\t@@|                                           		                                  |@@\n";
+cout<<"\t\t\t\t\t@@|                                           		                                  |@@\n";
+cout<<"\t\t\t\t\t@@|                                           		                                  |@@\n";
+cout<<"\t\t\t\t\t@@|                                           		                                  |@@\n";
+cout<<"\t\t\t\t\t@@|                               THANK YOU FOR USING                                     |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                            HOSPITAL MANAGEMENT SYSTEM                                 |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                                                                                       |@@\n";
+cout<<"\t\t\t\t\t@@|                                                -Brought To You by MR, AELIYA, RAFFAY  |@@\n";
+cout<<"\t\t\t\t\t@@|_____________________________|@@\n";
+cout<<"\t\t\t\t\t@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n\n\t\t\t\t\t";
+}
+
+
+cout<<"\n";
+
+}
+
+
