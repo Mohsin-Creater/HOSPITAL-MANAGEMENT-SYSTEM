@@ -10,7 +10,7 @@ int main()
 {
 char fname[20];
 time_t rawtime;
-struct tm * timeinfo;
+struct tm *timeinfo;
 
 time ( &rawtime );
 timeinfo = localtime ( &rawtime );
@@ -70,9 +70,8 @@ if(i>5||i<1)
 cout<<"\n\n\t\t\t\t\t\tInvalid Choice\n";cout<<"\t\t\t\t\t\tTry again...........\n\n";goto a;
 } //if inputed choice is other than given choice
 
-
-
 system("cls");
+
 
 //displaying the information about the hospital........option 4
 if(i==4)
