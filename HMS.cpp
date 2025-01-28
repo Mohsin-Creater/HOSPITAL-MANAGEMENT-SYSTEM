@@ -253,33 +253,51 @@ cout<<"\t\t\t\t\t@@|_____________________________|@@\n";
 cout<<"\t\t\t\t\t@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n\n\t\t\t\t\t";
 }
 
-
 cout<<"\n";
 
 }
-int login(){
-   string pass ="";
+
+int login() {
+   string pass = "";
    char ch;
-   cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t  HOSPITAL MANAGEMENT SYSTEM \n\n";
-   cout<<"\t\t\t\t\t\t\t\t------------------------------";
-   cout<<"\n\t\t\t\t\t\t\t\t\t     LOGIN \n";	
-   cout<<"\t\t\t\t\t\t\t\t------------------------------\n\n";	
-   cout << "\t\t\t\t\t\t\t\tEnter Password: ";
-   ch = _getch();
-   while(ch != 13){  //character 13 is enter
-      pass.push_back(ch);
-      cout << '*';
+   try {
+      cout << "\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t  HOSPITAL MANAGEMENT SYSTEM \n\n";
+      cout << "\t\t\t\t\t\t\t\t------------------------------";
+      cout << "\n\t\t\t\t\t\t\t\t\t     LOGIN \n";  
+      cout << "\t\t\t\t\t\t\t\t------------------------------\n\n";  
+      cout << "\t\t\t\t\t\t\t\tEnter Password: ";
+
       ch = _getch();
-   }
-   if(pass == "pass"){
-      cout << "\n\n\t\t\t\t\t\t\t\tAccess Granted! \n";
-      system("PAUSE");
-      system ("CLS");
-   }else{
-      cout << "\n\n\t\t\t\t\t\t\t\tAccess Aborted...\n\t\t\t\t\t\t\t\tPlease Try Again\n\n";
+      while (ch != 13) {  // character 13 is Enter
+         if (!isprint(ch)) { // Ensure only printable characters are added
+            throw runtime_error("Invalid character detected!");
+         }
+         pass.push_back(ch);
+         cout << '*';
+         ch = _getch();
+      }
+
+      if (pass == "pass") {
+         cout << "\n\n\t\t\t\t\t\t\t\tAccess Granted! \n";
+         system("PAUSE");
+         system("CLS");
+      } else {
+         throw invalid_argument("Incorrect password.");
+      }
+   } catch (const invalid_argument& e) {
+      cout << "\n\n\t\t\t\t\t\t\t\tAccess Aborted...\n\t\t\t\t\t\t\t\t" << e.what() << "\n\n";
       system("PAUSE");
       system("CLS");
-      login();
+      login(); // Retry login
+   } catch (const runtime_error& e) {
+      cout << "\n\n\t\t\t\t\t\t\t\tError: " << e.what() << "\n";
+      system("PAUSE");
+      return -1; // Return error code
+   } catch (...) {
+      cout << "\n\n\t\t\t\t\t\t\t\tAn unexpected error occurred.\n";
+      system("PAUSE");
+      return -1; // Return error code
    }
+   return 0; // Successful login
 }
 
