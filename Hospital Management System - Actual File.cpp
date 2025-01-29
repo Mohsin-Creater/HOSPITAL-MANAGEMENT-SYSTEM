@@ -3,7 +3,6 @@
 #include<cstdlib>
 #include<conio.h>
 #include<time.h>
-#include<iomanip>
 
 using namespace std;
 int main()
@@ -52,7 +51,7 @@ b:
 cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t  HOSPITAL MANAGEMENT SYSTEM \n\n";	
 cout<<"\n\n\t\t\t\t\t\tPlease,  Choose from the following Options: \n\n";
 cout<<"\t\t\t\t\t\t _________________________________________________________________ \n";
-cout<<"\t\t\t\t\t\t|                                           	                 	 |\n";
+cout<<"\t\t\t\t\t\t|                                           	                  |\n";
 cout<<"\t\t\t\t\t\t|                                                                 |\n";
 cout<<"\t\t\t\t\t\t|             1  >> Add New Patient Record                        |\n";
 cout<<"\t\t\t\t\t\t|                                                                 |\n";
@@ -66,7 +65,19 @@ cout<<"\t\t\t\t\t\t|             5  >> Exit the Program                         
 cout<<"\t\t\t\t\t\t|                                                                 |\n";
 cout<<"\t\t\t\t\t\t|_________________________________________________________________|\n\n";
 
-a:cout<<"\t\t\t\t\t\tEnter your choice: ";cin>>i;
+a:
+	try{
+cout<<"\t\t\t\t\t\tEnter your choice: ";cin>>i;
+	            if (cin.fail()) {
+                throw runtime_error("Invalid input! Please enter an integer.");
+            }
+    
+        } catch (const runtime_error &e) {
+            cout << "\n\t\t\t\t\t"<<e.what() <<endl;
+            cin.clear();  // Clear the error flag
+            cin.ignore(); 
+            goto a;
+        }
 
 if(i>5||i<1)
 {
