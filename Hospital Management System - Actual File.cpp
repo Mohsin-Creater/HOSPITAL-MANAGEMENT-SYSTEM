@@ -52,7 +52,7 @@ b:
 cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t  HOSPITAL MANAGEMENT SYSTEM \n\n";	
 cout<<"\n\n\t\t\t\t\t\tPlease,  Choose from the following Options: \n\n";
 cout<<"\t\t\t\t\t\t _________________________________________________________________ \n";
-cout<<"\t\t\t\t\t\t|                                           	                  |\n";
+cout<<"\t\t\t\t\t\t|                                           	                 	 |\n";
 cout<<"\t\t\t\t\t\t|                                                                 |\n";
 cout<<"\t\t\t\t\t\t|             1  >> Add New Patient Record                        |\n";
 cout<<"\t\t\t\t\t\t|                                                                 |\n";
