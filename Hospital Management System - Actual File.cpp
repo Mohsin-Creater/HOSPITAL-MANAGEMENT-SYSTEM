@@ -95,7 +95,7 @@ if(i==1)
   ofstream pat_file;
   char fname[20];
   
-  cout<<"\n\n\n\nEnter the patient's file name : ";
+  cout<<"\n\n\n\n\t\t\tEnter the patient's file name : ";
   cin.ignore();
   gets(fname);
   
