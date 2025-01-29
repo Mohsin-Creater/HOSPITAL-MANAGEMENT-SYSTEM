@@ -41,7 +41,6 @@ system("pause");
 system("cls");
 
 
-
 int i;
 int login();
 login();
@@ -66,54 +65,24 @@ cout<<"\t\t\t\t\t\t|                                                            
 cout<<"\t\t\t\t\t\t|_________________________________________________________________|\n\n";
 
 a:
-	try{
+  try{
 cout<<"\t\t\t\t\t\tEnter your choice: ";cin>>i;
 	            if (cin.fail()) {
-                throw runtime_error("Invalid input! Please enter an integer.");
+                throw runtime_error("Invalid input! \n\t\t\t\t\t\tPlease enter an integer......\n");
             }
     
         } catch (const runtime_error &e) {
-            cout << "\n\t\t\t\t\t"<<e.what() <<endl;
+            cout << "\n\t\t\t\t\t\t"<<e.what() <<endl;
             cin.clear();  // Clear the error flag
             cin.ignore(); 
             goto a;
-        }
-
-if(i>5||i<1)
-{
-cout<<"\n\n\t\t\t\t\t\tInvalid Choice\n";cout<<"\t\t\t\t\t\tTry again...........\n\n";goto a;
-} //if inputed choice is other than given choice
-
-
+        }if(i>5||i<1){
+				cout<<"\n\n\t\t\t\t\t\tInvalid Choice\n";cout<<"\t\t\t\t\t\tTry again...........\n\n";goto a;
+			} //if inputed choice is other than given choice
 
 system("cls");
 
-//displaying the information about the hospital........option 4
-if(i==4)
-{
-	ifstream file;
-	file.open("hos.txt");
-		if(!file)
-		{
-		cout<<"\nError while opening the file\n";goto b;
-		}
-		else
-		{
-		    cout<<"\n\n\n\n\n\n\n\t\t\t\t\t   ...........................Information about the Hospital.............................\n\n";
-		    string line;
-			while(file.good())
-			{
-			getline(file,line);
-			cout<<line<<"\n\t\t";
-			}
-			cout<<"\n\n\t\t";
-			system("pause");
-            system("cls");
-			goto b;
-		}
-}
-
-//Adding the record of the new patient..................option 3
+//Adding the record of the new patient..................option 1
 if(i==1)
 {
   time_t rawtime;
@@ -122,11 +91,14 @@ if(i==1)
   time ( &rawtime );
   timeinfo = localtime ( &rawtime );
   cout<<"\n\n\t\t\t\t\t\t\t\t"<< asctime (timeinfo);
+  
   ofstream pat_file;
   char fname[20];
+  
   cout<<"\n\n\n\nEnter the patient's file name : ";
   cin.ignore();
   gets(fname);
+  
   pat_file.open(fname);
   		if(!fname)
 		{
@@ -147,17 +119,42 @@ if(i==1)
                         };
 
             patient_info ak;
-            cout<<"\n********************************************************************\n";pat_file<<"\n********************************************************************\n\n";//fn1353 st
-            cout<<"\nName : ";pat_file<<"Name : ";gets(ak.name);pat_file<<ak.name<<"\n";
-            cout<<"\nAddress : ";pat_file<<"Address : ";gets(ak.address);pat_file<<ak.address<<"\n";
-            cout<<"\nContact Number : ";pat_file<<"Contact Number : ";gets(ak.contact);pat_file<<ak.contact<<"\n";
-            cout<<"\nAge : ";pat_file<<"Age : ";gets(ak.age);pat_file<<ak.age<<"\n";
-            cout<<"\nSex : ";pat_file<<"Sex : ";gets(ak.sex);pat_file<<ak.sex<<"\n";
-            cout<<"\nBlood Group : ";pat_file<<"Blood Group : ";gets(ak.blood_gp);pat_file<<ak.blood_gp<<"\n";
-            cout<<"\nAny Major disease suffered earlier : ";pat_file<<"Any Major disease suffered earlier : ";gets(ak.disease_past);pat_file<<ak.disease_past<<"\n";
-            cout<<"\nPatient ID : ";pat_file<<"Patient ID : ";gets(ak.id);pat_file<<ak.id<<"\n";
-            cout<<"\n********************************************************************\n";pat_file<<"\n********************************************************************\n\n";
-            cout<<"\nInformation Saved Successfully\n";
+cout << "\n********************************************************************\n";
+pat_file << "\n********************************************************************\n\n";
+
+// Taking input from the user
+cout << "\nName : ";
+gets(ak.name);
+cout << "\nAddress : ";
+gets(ak.address);
+cout << "\nContact Number : ";
+gets(ak.contact);
+cout << "\nAge : ";
+gets(ak.age);
+cout << "\nSex : ";
+gets(ak.sex);
+cout << "\nBlood Group : ";
+gets(ak.blood_gp);
+cout << "\nAny Major disease suffered earlier : ";
+gets(ak.disease_past);
+cout << "\nPatient ID : ";
+gets(ak.id);
+
+// Writing to file
+pat_file << "Name : " << ak.name << "\n";
+pat_file << "Address : " << ak.address << "\n";
+pat_file << "Contact Number : " << ak.contact << "\n";
+pat_file << "Age : " << ak.age << "\n";
+pat_file << "Sex : " << ak.sex << "\n";
+pat_file << "Blood Group : " << ak.blood_gp << "\n";
+pat_file << "Any Major disease suffered earlier : " << ak.disease_past << "\n";
+pat_file << "Patient ID : " << ak.id << "\n";
+
+cout << "\n********************************************************************\n";
+pat_file << "\n********************************************************************\n\n";
+
+cout << "\nInformation Saved Successfully\n";
+
             }
   system("pause");
   system("cls");
@@ -169,10 +166,12 @@ if(i==1)
 if(i==2)
 {
     fstream pat_file;
+    
     cout<<"\n\nEnter the patient's file name to be opened : ";
     cin.ignore();
     gets(fname);
     system("cls");
+    
 	pat_file.open(fname, ios::in);
 		if(!pat_file)
 		{
@@ -182,6 +181,7 @@ if(i==2)
 		{
 		    cout<<"\n\n\n\n\t\t\t\t........................................ Information about "<<fname<<" ........................................\n\n\n\n";
 		    string info;
+		    
 			while(pat_file.good())
 			{
 			getline(pat_file,info);
@@ -189,6 +189,7 @@ if(i==2)
 			}
 			cout<<"\n";
 			pat_file.close();
+			
 			pat_file.open(fname, ios::out | ios::app);
             cout<<"\n";
 			cout<<"Adding more information in patient's file................on : "<<asctime (timeinfo);pat_file<<"Description of "<<asctime (timeinfo)<<"\n";
@@ -200,13 +201,28 @@ if(i==2)
                                 char addmission[30];
                                 char ward[15];
                             };
-            app add;
-            cout<<"\nSymptoms : "; pat_file<<"Symptoms : ";gets(add.symptom); pat_file<<add.symptom<<"\n";
-            cout<<"\nDiagnosis : "; pat_file<<"Diagnosis : ";gets(add.diagnosis); pat_file<<add.diagnosis<<"\n";
-            cout<<"\nMedicines : "; pat_file<<"Medicines : ";gets(add.medicine); pat_file<<add.medicine<<"\n";
-            cout<<"\nAddmission Required? : "; pat_file<<"Addmission Required? : ";gets(add.addmission); pat_file<<add.addmission<<"\n";
-            cout<<"\nType of ward : "; pat_file<<"Type of ward : ";gets(add.ward); pat_file<<add.ward<<"\n";pat_file<<"\n*************************************************************************\n";
-            cout<<"\n\n"<<add.ward<<" ward is alloted Successfully\n";
+           	 					app add;
+           	 					
+		cout << "\nSymptoms : ";
+		gets(add.symptom);
+		cout << "\nDiagnosis : ";
+		gets(add.diagnosis);
+		cout << "\nMedicines : ";
+		gets(add.medicine);
+		cout << "\nAdmission Required? : ";
+		gets(add.addmission);
+		cout << "\nType of ward : ";
+		gets(add.ward);
+		
+		// Writing to file
+		pat_file << "Symptoms : " << add.symptom << "\n";
+		pat_file << "Diagnosis : " << add.diagnosis << "\n";
+		pat_file << "Medicines : " << add.medicine << "\n";
+		pat_file << "Admission Required? : " << add.addmission << "\n";
+		pat_file << "Type of ward : " << add.ward << "\n";
+		pat_file << "\n*************************************************************************\n";
+		
+		cout << "\n\n" << add.ward << " ward is allotted Successfully\n";
 			pat_file.close();
 			cout<<"\n\n";
 			system("pause");
@@ -219,10 +235,12 @@ if(i==2)
 if(i==3)
 {
     fstream pat_file;
+    
     cout<<"\n\nEnter the patient's file name to be opened : ";
     cin.ignore();
     gets(fname);
     system("cls");
+    
 	pat_file.open(fname, ios::in);
 		if(!pat_file)
 		{
@@ -232,6 +250,7 @@ if(i==3)
 		{
 		    cout<<"\n\n\n\n\t\t\t\t........................................ Full Medical History of "<<fname<<" ........................................\n\n\n\n";
 		    string info;
+		    
 			while(pat_file.good())
 			{
 			getline(pat_file,info);
@@ -242,6 +261,33 @@ if(i==3)
         system("pause");
         system("cls");
         goto b;
+}
+
+//displaying the information about the hospital........option 4
+if(i==4)
+{
+	ifstream file;
+	
+	file.open("hos.txt");
+		if(!file)
+		{
+		cout<<"\nError while opening the file\n";goto b;
+		}
+		else
+		{
+		    cout<<"\n\n\n\n\n\n\n\t\t\t\t\t   ...........................Information about the Hospital.............................\n\n";
+		    string line;
+		    
+			while(file.good())
+			{
+			getline(file,line);
+			cout<<line<<"\n\t\t";
+			}
+			cout<<"\n\n\t\t";
+			system("pause");
+            system("cls");
+			goto b;
+		}
 }
 
 //Exiting Through the system with a Thank You note........................option 5
@@ -308,12 +354,9 @@ int login() {
    } catch (const runtime_error& e) {
       cout << "\n\n\t\t\t\t\t\t\t\tError: " << e.what() << "\n";
       system("PAUSE");
-      return -1; // Return error code
-   } catch (...) {
-      cout << "\n\n\t\t\t\t\t\t\t\tAn unexpected error occurred.\n";
-      system("PAUSE");
-      return -1; // Return error code
-   }
+      system("CLS");
+      login();// Return error code
+   } 
    return 0; // Successful login
 }
 
